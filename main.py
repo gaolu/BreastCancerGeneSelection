@@ -8,9 +8,12 @@ def main():
     testName, testData, testLabel, testFeatureName, testFeatureList = myFeatureSel.loadData(fileName)
     
     myErrorEstimator = errorEstimator()
-    totalK = 2
-    featureNoList = myFeatureSel.seqFwdSearch(trainData, trainFeatureList, trainLabel, totalK, myErrorEstimator.resubstitution)
-    print featureNoList
+    totalK = 3
+    # featureNameList = myFeatureSel.seqFwdSearch(trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, myErrorEstimator.resubstitution)
+#     print featureNameList
+
+    featureNameList = myFeatureSel.exhSearch(trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, myErrorEstimator.resubstitution)
+    print featureNameList
     # ex_features = [6, 3, 1, 6, 8, 2, 3, 7, 9, 1]
 #     res_forw = myFeatureSel.seq_forw_select(features=ex_features, max_k=3, criterion_func=myFeatureSel.simple_crit_func, print_steps=True) 
 #     print res_forw

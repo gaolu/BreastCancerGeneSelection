@@ -2,7 +2,10 @@ import csv
 import itertools
 from classRules import *
 class featureSelection:
-    def seqFwdSearch(self, trainData, trainFeatureList, trainLabel, totalK, creterionFunc):
+    def seqFwdSearch(self, trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, creterionFunc):
+        # preserve the original lists
+        thisTrainFeatureName = trainFeatureName
+        thisTrainFeatureList = trainFeatureList
         myClassRules = classRules()
         featureList = []
         featureNoList = []
@@ -15,12 +18,12 @@ class featureSelection:
             print 'this is', roundNo, 'round'
             roundNo = roundNo + 1
             # classRule, trainLabel, trainData, featureData
-            maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList + trainFeatureList[0])
+            maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList + thisTrainFeatureList[0])
             # print featureList + trainFeatureList[0]
             print 'maxJ value is:', maxJ
             bestFeatureNo = 0
             featureNo = 0
-            for feature in trainFeatureList[1: ]:
+            for feature in thisTrainFeatureList[1: ]:
                 print 'now computing feature number:', featureNo
                 # print feature
                 if featureNo in featureNoList:
@@ -30,32 +33,43 @@ class featureSelection:
                     maxJ = jValue
                     bestFeatureNo = featureNo
                 featureNo = featureNo + 1
-            featureNoList.append(bestFeatureNo)
-            featureList.append(trainFeatureList[bestFeatureNo])
+            featureNoList.append(thisTrainFeatureName[bestFeatureNo])
+            featureList.append(thisTrainFeatureList[bestFeatureNo])
+            del thisTrainFeatureList[bestFeatureNo]
+            del thisTrainFeatureName[bestFeatureNo]
+            print len(thisTrainFeatureList), len(thisTrainFeatureName)
             print featureNoList, featureList
             if len(featureNoList) == totalK:
                 break
         return featureNoList
         
-    
-    def exhSearch(self, trainData, trainFeatureList, trainLabel, totalK, creterionFunc):
+    #self, trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, creterionFunc
+    def exhSearch(self, trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, creterionFunc):
+        myClassRules = classRules()
         featureList = []
         featureNoList = []
         n = len(trainFeatureList)
-        combinationList = self.getCombinations(n, totalK)
+        combinationTuples = self.getCombinations(n, totalK)
+        # print len(combinationTuples), type(combinationTuples), type(combinationTuples[0])
+        combinationList = [list(i) for i in combinationTuples]
+        print len(combinationList), type(combinationList), type(combinationList[0]), len(combinationList[0]), type(combinationList[0][0])
+        # featureNoList = [trainFeatureName[i] for i in combinationList[0]]
+        # print featureNoList
         featureNoList = combinationList[0]
         featureList = [trainFeatureList[featureNo] for featureNo in featureNoList]
-        maxJ = creterionFunc(featureList, trainLabel)
+        maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList)
+        print maxJ
         for combination in combinationList[1 : ]:
             featureList = [trainFeatureList[featureNo] for featureNo in combination]
-            jValue = creterionFunc(featureList, trainLabel)
+            jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList)
             if jValue > maxJ:
                 featureNoList = combination
-                maxJ = jValue    
-        return featureNoList
+                maxJ = jValue
+        featureNameList = [trainFeatureName[i] for i in featureNoList]    
+        return featureNameList
     
-    def getCombinations(n, totalK):
-        return list(itertools.combinations(range(n), topK))
+    def getCombinations(self, n, totalK):
+        return list(itertools.combinations(range(n), totalK))
     
     def loadData(self, fileName):
         data = []
@@ -88,52 +102,52 @@ class featureSelection:
         
         return dataID, data, labels, featureName, featureDict
     
-    def simple_crit_func(self, feat_sub):
-        """ Returns sum of numerical values of an input list. """ 
-        return sum(feat_sub)
-    
-    def seq_forw_select(self, features, max_k, criterion_func, print_steps=False):
-        """
-        Implementation of a Sequential Forward Selection algorithm.
-    
-        Keyword Arguments:
-            features (list): The feature space as a list of features.
-            max_k: Termination criterion; the size of the returned feature subset.
-            criterion_func (function): Function that is used to evaluate the
-                performance of the feature subset.
-            print_steps (bool): Prints the algorithm procedure if True.
-    
-        Returns the selected feature subset, a list of features of length max_k.
-
-        """
-    
-        # Initialization
-        feat_sub = []
-        k = 0
-        d = len(features)
-        if max_k > d:
-            max_k = d
-    
-        while True:
-        
-            # Inclusion step
-            if print_steps:
-                print('\nInclusion from feature space', features)
-            crit_func_max = criterion_func(feat_sub + [features[0]])
-            best_feat = features[0]
-            for x in features[1:]:
-                crit_func_eval = criterion_func(feat_sub + [x])
-                if crit_func_eval > crit_func_max:
-                    crit_func_max = crit_func_eval
-                    best_feat = x
-            feat_sub.append(best_feat)
-            if print_steps:
-                print('include: {} -> feature subset: {}'.format(best_feat, feat_sub))
-            features.remove(best_feat)
-        
-            # Termination condition
-            k = len(feat_sub)
-            if k == max_k:
-                break
-                
-        return feat_sub
+    # def simple_crit_func(self, feat_sub):
+    #     """ Returns sum of numerical values of an input list. """ 
+    #     return sum(feat_sub)
+    # 
+    # def seq_forw_select(self, features, max_k, criterion_func, print_steps=False):
+    #     """
+    #     Implementation of a Sequential Forward Selection algorithm.
+    # 
+    #     Keyword Arguments:
+    #         features (list): The feature space as a list of features.
+    #         max_k: Termination criterion; the size of the returned feature subset.
+    #         criterion_func (function): Function that is used to evaluate the
+    #             performance of the feature subset.
+    #         print_steps (bool): Prints the algorithm procedure if True.
+    # 
+    #     Returns the selected feature subset, a list of features of length max_k.
+    # 
+    #     """
+    # 
+    #     # Initialization
+    #     feat_sub = []
+    #     k = 0
+    #     d = len(features)
+    #     if max_k > d:
+    #         max_k = d
+    # 
+    #     while True:
+    #     
+    #         # Inclusion step
+    #         if print_steps:
+    #             print('\nInclusion from feature space', features)
+    #         crit_func_max = criterion_func(feat_sub + [features[0]])
+    #         best_feat = features[0]
+    #         for x in features[1:]:
+    #             crit_func_eval = criterion_func(feat_sub + [x])
+    #             if crit_func_eval > crit_func_max:
+    #                 crit_func_max = crit_func_eval
+    #                 best_feat = x
+    #         feat_sub.append(best_feat)
+    #         if print_steps:
+    #             print('include: {} -> feature subset: {}'.format(best_feat, feat_sub))
+    #         features.remove(best_feat)
+    #     
+    #         # Termination condition
+    #         k = len(feat_sub)
+    #         if k == max_k:
+    #             break
+    #             
+    #     return feat_sub
