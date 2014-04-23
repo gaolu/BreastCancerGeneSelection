@@ -1,14 +1,19 @@
+from classRules import *
 class errorEstimator:
-    def resubstitution(self, classRule, trainLabel, trainData, featureData, trainFeatureList):
-        print 'in resubstituition'
+    def resubstitution(self, classRule, trainLabel, trainData, featureData):
+        # myClassRule = classRules()
+        # print 'in resubstituition'
+        # print featureData
         predictRet = classRule(trainLabel, featureData, featureData)
+        # print predictRet
+        # print type(predictRet), len(predictRet), predictRet[0]
         error = 0
         for i in range(len(predictRet)):
-            error = error + abs(predictRet[i] - trainLabel[i])
+            error = error + abs(int(predictRet[i]) - int(trainLabel[i]))
         jValue = 1 - 1.0 / len(predictRet) * error
         return jValue
     
-    def looCrossVal(self, classRule, trainLabel, trainData, featureData, trainFeatureList):
+    def looCrossVal(self, classRule, trainLabel, trainData, featureData):
         print 'in loo cross validation'
         # k = len(featureData)
         error = 0

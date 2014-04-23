@@ -1,28 +1,38 @@
 import csv
 import itertools
+from classRules import *
 class featureSelection:
     def seqFwdSearch(self, trainData, trainFeatureList, trainLabel, totalK, creterionFunc):
+        myClassRules = classRules()
         featureList = []
         featureNoList = []
         k = 0
         d = len(trainData)
         if totalK > d:
             totalK = d
-        
+        roundNo = 1
         while True:
-            maxJ = creterionFunc(featureList + trainFeatureList[0], trainLabel)
+            print 'this is', roundNo, 'round'
+            roundNo = roundNo + 1
+            # classRule, trainLabel, trainData, featureData
+            maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList + trainFeatureList[0])
+            # print featureList + trainFeatureList[0]
+            print 'maxJ value is:', maxJ
             bestFeatureNo = 0
             featureNo = 0
             for feature in trainFeatureList[1: ]:
+                print 'now computing feature number:', featureNo
+                # print feature
                 if featureNo in featureNoList:
                     continue
-                jValue = creterionFunc(featureList + feature, trainLabel)
+                jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList + feature)
                 if jValue > maxJ:
                     maxJ = jValue
                     bestFeatureNo = featureNo
                 featureNo = featureNo + 1
             featureNoList.append(bestFeatureNo)
             featureList.append(trainFeatureList[bestFeatureNo])
+            print featureNoList, featureList
             if len(featureNoList) == totalK:
                 break
         return featureNoList
@@ -72,9 +82,9 @@ class featureSelection:
                 featureData.append(sample[featureNo])
             featureDict.append(featureData)
             featureNo = featureNo + 1
-        print len(featureDict)
-        print featureDict[0]
-        print featureDict[-1]
+        # print len(featureDict)
+#         print featureDict[0]
+#         print featureDict[-1]
         
         return dataID, data, labels, featureName, featureDict
     
