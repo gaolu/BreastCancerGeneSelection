@@ -18,17 +18,35 @@ class featureSelection:
             print 'this is', roundNo, 'round'
             roundNo = roundNo + 1
             # classRule, trainLabel, trainData, featureData
-            maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList + thisTrainFeatureList[0])
-            # print featureList + trainFeatureList[0]
+            print 'calculating maxJ for the first time'
+            # print len(featureList + trainFeatureList[0])
+            # currentFeatureList = featureList
+            if len(featureList) != 0:
+                newFeatureList = []
+                for feature in featureList:
+                    newFeatureList.append(feature)
+                newFeatureList.append(thisTrainFeatureList[0])
+                maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, newFeatureList)
+            else:
+                maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, [thisTrainFeatureList[0]])
+            # print len(featureList)
             print 'maxJ value is:', maxJ
             bestFeatureNo = 0
             featureNo = 0
             for feature in thisTrainFeatureList[1: ]:
-                print 'now computing feature number:', featureNo
                 # print feature
                 if featureNo in featureNoList:
+                    print 'continue'
                     continue
-                jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList + feature)
+                print 'now computing feature number:', featureNo
+                if len(featureList) != 0:
+                    newFeatureList = []
+                    for features in featureList:
+                        newFeatureList.append(features)
+                    newFeatureList.append(feature)
+                    jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, newFeatureList)
+                else:
+                    jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, [feature])
                 if jValue > maxJ:
                     maxJ = jValue
                     bestFeatureNo = featureNo

@@ -4,6 +4,7 @@ class errorEstimator:
         # myClassRule = classRules()
         # print 'in resubstituition'
         # print featureData
+        print len(featureData)
         predictRet = classRule(trainLabel, featureData, featureData)
         # print predictRet
         # print type(predictRet), len(predictRet), predictRet[0]
@@ -15,12 +16,18 @@ class errorEstimator:
     
     def looCrossVal(self, classRule, trainLabel, trainData, featureData):
         print 'in loo cross validation'
+        print len(featureData)
         # k = len(featureData)
         error = 0
         transformedFeatureData = []
+        # transform the data matrix
         for i in range(len(trainLabel)):
             newTuple = []
+            print 'i is:', i
+            print len(featureData)
             for j in range(len(featureData)):
+                print 'j is:', j
+                print len(featureData[j])
                 newTuple.append(featureData[j][i])
             transformdFeatureData.append(newTuple)
         for i in range(len(transformedFeatureData)):
