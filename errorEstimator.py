@@ -6,11 +6,15 @@ class errorEstimator:
         # print featureData
         # print len(featureData)
         predictRet = classRule(trainLabel, self.transMat(featureData), self.transMat(featureData))
+        # print len(predictRet), type(predictRet)
+        # print predictRet
+        # print trainLabel
         # print predictRet
         # print type(predictRet), len(predictRet), predictRet[0]
         error = 0
         for i in range(len(predictRet)):
             error = error + abs(int(predictRet[i]) - int(trainLabel[i]))
+        # print error
         jValue = 1 - 1.0 / len(predictRet) * error
         return jValue
     
@@ -51,6 +55,7 @@ class errorEstimator:
                 newTrainData.append(transformedFeatureData[j])
             # print len(newTrainLabel[0]), len(newTrainData[0])
             predictRet = classRule(newTrainLabel, newTrainData, transformedFeatureData[i])
+            # print len(predictRet)
             for ret in predictRet:
                 error = error + abs(int(ret) - int(trainLabel[i]))
         jValue = 1 - 1.0 / len(trainLabel) * error

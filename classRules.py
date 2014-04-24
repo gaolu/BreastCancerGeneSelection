@@ -14,6 +14,8 @@ class classRules:
     
     
     def DLDA(self, trainLabel, featureData, testData):
+        # print featureData == testData
+        # print testData
         clf = LDA()
         clf.fit(featureData, trainLabel)
         testLabel = clf.predict(testData)

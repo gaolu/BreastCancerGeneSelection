@@ -22,18 +22,20 @@ class featureSelection:
             # print len(featureList + trainFeatureList[0])
             # currentFeatureList = featureList
             if len(featureList) != 0:
+                # print featureList
                 newFeatureList = []
                 for feature in featureList:
                     newFeatureList.append(feature)
                 newFeatureList.append(thisTrainFeatureList[0])
-                maxJ = creterionFunc(myClassRules.linSVM, trainLabel, trainData, newFeatureList)
+                maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, newFeatureList)
             else:
-                maxJ = creterionFunc(myClassRules.linSVM, trainLabel, trainData, [thisTrainFeatureList[0]])
+                maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, [thisTrainFeatureList[0]])
             # print len(featureList)
             # print 'maxJ value is:', maxJ
             bestFeatureNo = 0
-            featureNo = 0
+            featureNo = 1
             for feature in thisTrainFeatureList[1: ]:
+                # print 'doing the feature number:', featureNo, thisTrainFeatureName[featureNo]
                 # print feature
                 if featureNo in featureNoList:
                     # print 'continue'
@@ -44,9 +46,11 @@ class featureSelection:
                     for features in featureList:
                         newFeatureList.append(features)
                     newFeatureList.append(feature)
-                    jValue = creterionFunc(myClassRules.linSVM, trainLabel, trainData, newFeatureList)
+                    jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, newFeatureList)
                 else:
-                    jValue = creterionFunc(myClassRules.linSVM, trainLabel, trainData, [feature])
+                    # print 'no feature yet'
+                    jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, [feature])
+                # print 'jValue is:', jValue
                 if jValue > maxJ:
                     maxJ = jValue
                     bestFeatureNo = featureNo
@@ -59,7 +63,7 @@ class featureSelection:
             # print len(thisTrainFeatureList), len(thisTrainFeatureName)
             # print featureNoList, featureList
             if len(featureNoList) == totalK:
-                print 1.0 - maxJ
+                print 'maxJ when totalK is', totalK, ':', maxJ
                 break
         return featureNoList
         
@@ -77,16 +81,16 @@ class featureSelection:
         # print featureNoList
         featureNoList = combinationList[0]
         featureList = [trainFeatureList[featureNo] for featureNo in featureNoList]
-        maxJ = creterionFunc(myClassRules.linSVM, trainLabel, trainData, featureList)
+        maxJ = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList)
         # print maxJ
         for combination in combinationList[1 : ]:
             featureList = [trainFeatureList[featureNo] for featureNo in combination]
-            jValue = creterionFunc(myClassRules.linSVM, trainLabel, trainData, featureList)
+            jValue = creterionFunc(myClassRules.DLDA, trainLabel, trainData, featureList)
             if jValue > maxJ:
                 featureNoList = combination
                 maxJ = jValue
         featureNameList = [trainFeatureName[i] for i in featureNoList]  
-        print 1.0 - maxJ  
+        print 'maxJ when totalK is', totalK, ':', maxJ
         return featureNameList
     
     def getCombinations(self, n, totalK):
