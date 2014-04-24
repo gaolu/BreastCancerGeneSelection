@@ -5,7 +5,7 @@ class errorEstimator:
         # print 'in resubstituition'
         # print featureData
         print len(featureData)
-        predictRet = classRule(trainLabel, featureData, featureData)
+        predictRet = classRule(trainLabel, self.transMat(featureData), featureData)
         # print predictRet
         # print type(predictRet), len(predictRet), predictRet[0]
         error = 0
@@ -40,3 +40,16 @@ class errorEstimator:
                 error = error + abs(ret - trainLabel[i])
         jValue = 1 - 1.0 / len(trainLabel) * error
         return jValue
+        
+    def transMat(self, inputMat):
+        rowNum = len(inputMat[0])
+        colNum = len(inputMat)
+        outputMat = []
+        for row in range(rowNum): # rowNum=60
+            newTuple = []
+            for col in range(colNum): # colNum = 1-5
+                newTuple.append(inputMat[col][row])
+            outputMat.append(newTuple)
+        return outputMat
+                
+        

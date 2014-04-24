@@ -8,7 +8,7 @@ def main():
     testName, testData, testLabel, testFeatureName, testFeatureList = myFeatureSel.loadData(fileName)
     
     myErrorEstimator = errorEstimator()
-    totalK = 2
+    totalK = 5
     featureNameList = myFeatureSel.seqFwdSearch(trainFeatureName, trainData, trainFeatureList, trainLabel, totalK, myErrorEstimator.resubstitution)
     print featureNameList
 
