@@ -4,8 +4,8 @@ class errorEstimator:
         # myClassRule = classRules()
         # print 'in resubstituition'
         # print featureData
-        print len(featureData)
-        predictRet = classRule(trainLabel, self.transMat(featureData), featureData)
+        # print len(featureData)
+        predictRet = classRule(trainLabel, self.transMat(featureData), self.transMat(featureData))
         # print predictRet
         # print type(predictRet), len(predictRet), predictRet[0]
         error = 0
@@ -15,13 +15,13 @@ class errorEstimator:
         return jValue
     
     def looCrossVal(self, classRule, trainLabel, trainData, featureData):
-        print 'in loo cross validation'
-        print 'the length of featureData is:', len(featureData)
+        # print 'in loo cross validation'
+        # print 'the length of featureData is:', len(featureData)
         # k = len(featureData)
         error = 0
         transformedFeatureData = self.transMat(featureData)
         # print 'transfored feature data is:'
-        print transformedFeatureData
+        # print transformedFeatureData
         # print 'the length of the transformed feature data is:', len(transformedFeatureData)
         # transform the data matrix
         # for i in range(len(trainLabel)):
@@ -34,7 +34,7 @@ class errorEstimator:
 #                 newTuple.append(featureData[j][i])
 #             transformdFeatureData.append(newTuple)
         for i in range(len(transformedFeatureData)):
-            print 'the sample to be left is:', i
+            # print 'the sample to be left is:', i
             # newTrainData = transformedFeatureData
 #             del newTrainData[i]
 #             newTrainLabel = trainLabel
@@ -49,7 +49,7 @@ class errorEstimator:
                 if j == i:
                     continue
                 newTrainData.append(transformedFeatureData[j])
-            print len(newTrainLabel[0]), len(newTrainData[0])
+            # print len(newTrainLabel[0]), len(newTrainData[0])
             predictRet = classRule(newTrainLabel, newTrainData, transformedFeatureData[i])
             for ret in predictRet:
                 error = error + abs(int(ret) - int(trainLabel[i]))

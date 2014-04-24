@@ -1,3 +1,6 @@
+from sklearn.lda import LDA
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import svm
 class classRules:
     # trainLabel is the label of the training data
     # featureData is the list of training data
@@ -11,10 +14,19 @@ class classRules:
     
     
     def DLDA(self, trainLabel, featureData, testData):
-        return trainLabel
+        clf = LDA()
+        clf.fit(featureData, trainLabel)
+        testLabel = clf.predict(testData)
+        return testLabel
     
     def kNN(self, trainLabel, featureData, testData):
-        return trainLabel
+        neigh = KNeighborsClassifier(n_neighbors=3)
+        neigh.fit(featureData, trainLabel)
+        testLabel = neigh.predict(testData)
+        return testLabel
     
     def linSVM(self, trainLabel, featureData, testData):
-        return trainLabel
+        clf = svm.SVC()
+        clf.fit(featureData, trainLabel)
+        testLabel = clf.predict(testData)
+        return testLabel
