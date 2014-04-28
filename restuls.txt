@@ -6,30 +6,35 @@ sfs
 resub
 maxJ when totalK is 1 : 0.866666666667
 ['ORC6L']
+True error is: 0.170212765957
 
 k=2
 sfs
 resub
 maxJ when totalK is 2 : 0.883333333333
 ['ORC6L', 'GNAZ']
+True error is: 0.174468085106
 
 k=3
 sfs
 resub
 maxJ when totalK is 3 : 0.883333333333
 ['ORC6L', 'GNAZ', 'DC13']
+True error is: 0.170212765957
 
 k=4
 sfs
 resub
 maxJ when totalK is 4 : 0.883333333333
 ['ORC6L', 'GNAZ', 'DC13', 'FLT1']
+True error is: 0.170212765957
 
 k=5
 sfs
 resub
 maxJ when totalK is 5 : 0.883333333333
 ['ORC6L', 'GNAZ', 'DC13', 'FLT1', 'G9']
+True error is: 0.140425531915
 
 =======================================
 k=1
@@ -37,30 +42,35 @@ sfs
 loo
 maxJ when totalK is 1 : 0.866666666667
 ['ORC6L']
+True error is: 0.170212765957
 
 k=2
 sfs
 loo
 maxJ when totalK is 2 : 0.883333333333
 ['ORC6L', 'GSTM3']
+True error is: 0.148936170213
 
 k=3
 sfs
 loo
 maxJ when totalK is 3 : 0.883333333333
 ['ORC6L', 'GSTM3', 'ALDH4']
+True error is: 0.153191489362
 
 k=4
 sfs
 loo
 maxJ when totalK is 4 : 0.883333333333
 ['ORC6L', 'GSTM3', 'ALDH4', 'MMP9']
+True error is: 0.153191489362
 
 k=5
 sfs
 loo
 maxJ when totalK is 5 : 0.9
 ['ORC6L', 'GSTM3', 'ALDH4', 'MMP9', 'G8']
+True error is: 0.165957446809
 
 =======================================
 k=1
@@ -68,12 +78,14 @@ exs
 resub
 maxJ when totalK is 1 : 0.866666666667
 ['ORC6L']
+True error is: 0.170212765957
 
 k=2
 exs
 resub
 maxJ when totalK is 2 : 0.916666666667
 ['G8', 'MMP9']
+True error is: 0.234042553191
 
 =======================================
 k=1
@@ -81,12 +93,14 @@ exs
 loo
 maxJ when totalK is 1 : 0.866666666667
 ['ORC6L']
+True error is: 0.170212765957
 
 k=2
 exs
 loo
 maxJ when totalK is 2 : 0.883333333333
 ['G5', 'CENPA']
+True error is: 0.212765957447
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 kNN
@@ -96,30 +110,35 @@ sfs
 resub
 maxJ when totalK is 1 : 0.9
 ['CENPA']
+True error is: 0.225531914894
 
 k=2
 sfs
 resub
 maxJ when totalK is 2 : 0.966666666667
 ['CENPA', 'G5']
+True error is: 0.212765957447
 
 k=3
 sfs
 resub
 maxJ when totalK is 3 : 0.983333333333
 ['CENPA', 'G5', 'PECI.1']
+True error is: 0.221276595745
 
 k=4
 sfs
 resub
 maxJ when totalK is 4 : 0.983333333333
 ['CENPA', 'G5', 'PECI.1', 'G15']
+True error is: 0.246808510638
 
 k=5
 sfs
 resub
 maxJ when totalK is 5 : 0.983333333333
 ['CENPA', 'G5', 'PECI.1', 'G15', 'COL4A2']
+True error is: 0.23829787234
 
 =======================================
 k=1
@@ -127,30 +146,35 @@ sfs
 loo
 maxJ when totalK is 1 : 0.816666666667
 ['ORC6L']
+True error is: 0.225531914894
 
 k=2
 sfs
 loo
 maxJ when totalK is 2 : 0.883333333333
 ['ORC6L', 'KIAA1067']
+True error is: 0.195744680851
 
 k=3
 sfs
 loo
 maxJ when totalK is 3 : 0.883333333333
 ['ORC6L', 'KIAA1067', 'GMPS']
+True error is: 0.2
 
 k=4
 sfs
 loo
 maxJ when totalK is 4 : 0.916666666667
 ['ORC6L', 'KIAA1067', 'GMPS', 'FGF18']
+True error is: 0.23829787234
 
 k=5
 sfs
 loo
 maxJ when totalK is 5 : 0.916666666667
 ['ORC6L', 'KIAA1067', 'GMPS', 'FGF18', 'G4']
+True error is: 0.242553191489
 
 =======================================
 k=1
@@ -158,12 +182,14 @@ exs
 resub
 maxJ when totalK is 1 : 0.9
 ['CENPA']
+True error is: 0.225531914894
 
 k=2
 exs
 resub
 maxJ when totalK is 2 : 0.966666666667
 ['G5', 'CENPA']
+True error is: 0.212765957447
 
 =======================================
 k=1
@@ -171,12 +197,14 @@ exs
 loo
 maxJ when totalK is 1 : 0.816666666667
 ['ORC6L']
+True error is: 0.225531914894
 
 k=2
 exs
 loo
 maxJ when totalK is 2 : 0.9
 ['G5', 'CENPA']
+True error is: 0.212765957447
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 linSVM
@@ -186,30 +214,35 @@ sfs
 resub
 maxJ when totalK is 1 : 0.866666666667
 ['ORC6L']
+True error is: 0.178723404255
 
 k=2
 sfs
 resub
 maxJ when totalK is 2 : 0.9
 ['ORC6L', 'GSTM3']
+True error is: 0.136170212766
 
 k=3
 sfs
 resub
 maxJ when totalK is 3 : 0.933333333333
 ['ORC6L', 'GSTM3', 'G5']
+True error is: 0.140425531915
 
 k=4
 sfs
 resub
 maxJ when totalK is 4 : 0.916666666667
 ['ORC6L', 'GSTM3', 'G5', 'G8']
+True error is: 0.153191489362
 
 k=5
 sfs
 resub
 maxJ when totalK is 5 : 0.933333333333
 ['ORC6L', 'GSTM3', 'G5', 'G8', 'HEC']
+True error is: 0.157446808511
 
 =======================================
 k=1
@@ -217,30 +250,35 @@ sfs
 loo
 maxJ when totalK is 1 : 0.85
 ['ORC6L']
+True error is: 0.178723404255
 
 k=2
 sfs
 loo
 maxJ when totalK is 2 : 0.883333333333
 ['ORC6L', 'KIAA1442']
+True error is: 0.157446808511
 
 k=3
 sfs
 loo
 maxJ when totalK is 3 : 0.9
 ['ORC6L', 'KIAA1442', 'G10']
+True error is: 0.144680851064
 
 k=4
 sfs
 loo
 maxJ when totalK is 4 : 0.916666666667
 ['ORC6L', 'KIAA1442', 'G10', 'UCH37']
+True error is: 0.148936170213
 
 k=5
 sfs
 loo
 maxJ when totalK is 5 : 0.916666666667
 ['ORC6L', 'KIAA1442', 'G10', 'UCH37', 'ECT2']
+True error is: 0.16170212766
 
 =======================================
 k=1
@@ -248,12 +286,14 @@ exs
 resub
 maxJ when totalK is 1 : 0.866666666667
 ['ORC6L']
+True error is: 0.178723404255
 
 k=2
 exs
 resub
 maxJ when totalK is 2 : 0.916666666667
 ['IGFBP5.1', 'CENPA']
+True error is: 0.157446808511
 
 =======================================
 k=1
@@ -261,9 +301,11 @@ exs
 loo
 maxJ when totalK is 1 : 0.85
 ['ORC6L']
+True error is: 0.178723404255
 
 k=2
 exs
 loo
 maxJ when totalK is 2 : 0.9
 ['LOC51203', 'IGFBP5.1']
+True error is: 0.195744680851
