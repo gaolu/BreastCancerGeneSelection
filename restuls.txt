@@ -1,0 +1,269 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+DLDA
+=======================================
+k=1
+sfs
+resub
+maxJ when totalK is 1 : 0.866666666667
+['ORC6L']
+
+k=2
+sfs
+resub
+maxJ when totalK is 2 : 0.883333333333
+['ORC6L', 'GNAZ']
+
+k=3
+sfs
+resub
+maxJ when totalK is 3 : 0.883333333333
+['ORC6L', 'GNAZ', 'DC13']
+
+k=4
+sfs
+resub
+maxJ when totalK is 4 : 0.883333333333
+['ORC6L', 'GNAZ', 'DC13', 'FLT1']
+
+k=5
+sfs
+resub
+maxJ when totalK is 5 : 0.883333333333
+['ORC6L', 'GNAZ', 'DC13', 'FLT1', 'G9']
+
+=======================================
+k=1
+sfs
+loo
+maxJ when totalK is 1 : 0.866666666667
+['ORC6L']
+
+k=2
+sfs
+loo
+maxJ when totalK is 2 : 0.883333333333
+['ORC6L', 'GSTM3']
+
+k=3
+sfs
+loo
+maxJ when totalK is 3 : 0.883333333333
+['ORC6L', 'GSTM3', 'ALDH4']
+
+k=4
+sfs
+loo
+maxJ when totalK is 4 : 0.883333333333
+['ORC6L', 'GSTM3', 'ALDH4', 'MMP9']
+
+k=5
+sfs
+loo
+maxJ when totalK is 5 : 0.9
+['ORC6L', 'GSTM3', 'ALDH4', 'MMP9', 'G8']
+
+=======================================
+k=1
+exs
+resub
+maxJ when totalK is 1 : 0.866666666667
+['ORC6L']
+
+k=2
+exs
+resub
+maxJ when totalK is 2 : 0.916666666667
+['G8', 'MMP9']
+
+=======================================
+k=1
+exs
+loo
+maxJ when totalK is 1 : 0.866666666667
+['ORC6L']
+
+k=2
+exs
+loo
+maxJ when totalK is 2 : 0.883333333333
+['G5', 'CENPA']
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+kNN
+=======================================
+k=1
+sfs
+resub
+maxJ when totalK is 1 : 0.9
+['CENPA']
+
+k=2
+sfs
+resub
+maxJ when totalK is 2 : 0.966666666667
+['CENPA', 'G5']
+
+k=3
+sfs
+resub
+maxJ when totalK is 3 : 0.983333333333
+['CENPA', 'G5', 'PECI.1']
+
+k=4
+sfs
+resub
+maxJ when totalK is 4 : 0.983333333333
+['CENPA', 'G5', 'PECI.1', 'G15']
+
+k=5
+sfs
+resub
+maxJ when totalK is 5 : 0.983333333333
+['CENPA', 'G5', 'PECI.1', 'G15', 'COL4A2']
+
+=======================================
+k=1
+sfs
+loo
+maxJ when totalK is 1 : 0.816666666667
+['ORC6L']
+
+k=2
+sfs
+loo
+maxJ when totalK is 2 : 0.883333333333
+['ORC6L', 'KIAA1067']
+
+k=3
+sfs
+loo
+maxJ when totalK is 3 : 0.883333333333
+['ORC6L', 'KIAA1067', 'GMPS']
+
+k=4
+sfs
+loo
+maxJ when totalK is 4 : 0.916666666667
+['ORC6L', 'KIAA1067', 'GMPS', 'FGF18']
+
+k=5
+sfs
+loo
+maxJ when totalK is 5 : 0.916666666667
+['ORC6L', 'KIAA1067', 'GMPS', 'FGF18', 'G4']
+
+=======================================
+k=1
+exs
+resub
+maxJ when totalK is 1 : 0.9
+['CENPA']
+
+k=2
+exs
+resub
+maxJ when totalK is 2 : 0.966666666667
+['G5', 'CENPA']
+
+=======================================
+k=1
+exs
+loo
+maxJ when totalK is 1 : 0.816666666667
+['ORC6L']
+
+k=2
+exs
+loo
+maxJ when totalK is 2 : 0.9
+['G5', 'CENPA']
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+linSVM
+=======================================
+k=1
+sfs
+resub
+maxJ when totalK is 1 : 0.866666666667
+['ORC6L']
+
+k=2
+sfs
+resub
+maxJ when totalK is 2 : 0.9
+['ORC6L', 'GSTM3']
+
+k=3
+sfs
+resub
+maxJ when totalK is 3 : 0.933333333333
+['ORC6L', 'GSTM3', 'G5']
+
+k=4
+sfs
+resub
+maxJ when totalK is 4 : 0.916666666667
+['ORC6L', 'GSTM3', 'G5', 'G8']
+
+k=5
+sfs
+resub
+maxJ when totalK is 5 : 0.933333333333
+['ORC6L', 'GSTM3', 'G5', 'G8', 'HEC']
+
+=======================================
+k=1
+sfs
+loo
+maxJ when totalK is 1 : 0.85
+['ORC6L']
+
+k=2
+sfs
+loo
+maxJ when totalK is 2 : 0.883333333333
+['ORC6L', 'KIAA1442']
+
+k=3
+sfs
+loo
+maxJ when totalK is 3 : 0.9
+['ORC6L', 'KIAA1442', 'G10']
+
+k=4
+sfs
+loo
+maxJ when totalK is 4 : 0.916666666667
+['ORC6L', 'KIAA1442', 'G10', 'UCH37']
+
+k=5
+sfs
+loo
+maxJ when totalK is 5 : 0.916666666667
+['ORC6L', 'KIAA1442', 'G10', 'UCH37', 'ECT2']
+
+=======================================
+k=1
+exs
+resub
+maxJ when totalK is 1 : 0.866666666667
+['ORC6L']
+
+k=2
+exs
+resub
+maxJ when totalK is 2 : 0.916666666667
+['IGFBP5.1', 'CENPA']
+
+=======================================
+k=1
+exs
+loo
+maxJ when totalK is 1 : 0.85
+['ORC6L']
+
+k=2
+exs
+loo
+maxJ when totalK is 2 : 0.9
+['LOC51203', 'IGFBP5.1']
